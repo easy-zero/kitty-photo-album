@@ -1,0 +1,54 @@
+$background: #eee;
+$border: #ccc;
+$container: #fff;
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $background;
+  flex-direction: column;
+}
+
+.Title {
+  text-align: center;
+}
+
+.Container {
+  border: 1px solid $border;
+  background-color: $container;
+  border-radius: 5px;
+  width: 800px;
+  height: 600px;
+}
+
+.BreadCrumb {
+  height: 32px;
+  padding: 16px;
+  border-bottom: 1px solid $border;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.Nodes {
+  display: flex;
+  flex-direction: row;
+}
+
+.Node {
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Image {
+  width: 140px;
+}
+
+.Name {
+  text-align: center;
+  word-break: keep-all;
+}
