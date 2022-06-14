@@ -1,3 +1,5 @@
+import Image from "./constant/image";
+
 const mockupData = [
   {
     id: "1",
@@ -26,7 +28,7 @@ const mockupData = [
     id: "19",
     name: "물 마시는 사진",
     type: "FILE",
-    filePath: "./assets/images/sample_image.jpeg",
+    filePath: Image.sample_image,
     parent: {
       id: "1",
     },

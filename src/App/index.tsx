@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Layout, Node } from "./components";
+import { Layout, Node, Modal } from "./components";
 
 import callMockup from "./mockup"; // TODO: 삭제
 
@@ -14,6 +14,8 @@ interface IData {
 export default function App() {
   const [pwd, setPwd] = useState("root");
   const [data, setData] = useState<IData[]>([]);
+  const [filePath, setFilePath] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const fetchData = callMockup();
@@ -22,26 +24,39 @@ export default function App() {
     }
   }, []);
 
-  const onClickNode = (nodeId: string, nodeName: string, nodeType: string) => {
-    if (nodeType === "FILE") {
+  const onClickNode = (item: any) => {
+    if (item.type === "FILE") {
+      setIsOpen(true);
+      setFilePath(item.filePath);
+    } else {
+      setPwd(`${pwd} - ${item.name}`);
+      const fetchData = callMockup(Number(item.id));
+      setData(fetchData);
     }
-    setPwd(`${pwd} - ${nodeName}`);
-    const fetchData = callMockup(Number(nodeId));
-    setData(fetchData);
   };
 
   return (
-    <Layout path={pwd}>
-      {data &&
-        data.map((item, i) => (
-          <Node
-            id={item.id}
-            type={item.type}
-            name={item.name}
-            onClick={onClickNode}
-            key={i}
-          />
-        ))}
-    </Layout>
+    <>
+      <Layout path={pwd}>
+        {data &&
+          data.map((item, i) => (
+            <Node
+              id={item.id}
+              type={item.type}
+              name={item.name}
+              onClick={() => onClickNode(item)}
+              // onClick={() => setIsOpen(true)}
+              key={i}
+            />
+          ))}
+      </Layout>
+      <Modal
+        type="image"
+        imagePath={filePath}
+        visible={isOpen}
+        onConfirm={() => setIsOpen(false)}
+        onClose={() => setIsOpen(false)}
+      />
+    </>
   );
 }
