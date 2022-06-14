@@ -1,19 +1,31 @@
 import React from "react";
+import Image from "../../constant/image";
 import "../../assets/scss/style.scss";
 
 type Props = {
   title: string;
   path: string;
-  children: JSX.Element;
+  children: JSX.Element | React.ReactNode;
 };
 
 export default function Layout(props: Props) {
+  const { title, path, children } = props;
+
   return (
     <>
-      <h1 className="Title">{props.title}</h1>
+      <h1 className="Title">{title}</h1>
       <div className="Container">
-        <div className="BreadCrumb">{props.path}</div>
-        {props.children}
+        <div className="BreadCrumb">{path}</div>
+        <div className="Nodes">
+          {path === "root" ? (
+            children
+          ) : (
+            <>
+              <img className="Prev" src={Image.prev} alt="prev.png" />
+              {children}
+            </>
+          )}
+        </div>
       </div>
     </>
   );

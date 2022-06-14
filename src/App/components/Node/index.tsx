@@ -1,26 +1,39 @@
 import React from "react";
+import Image from "../../constant/image";
 import "../../assets/scss/style.scss";
 
 type Props = {
-  icon: string;
+  id: string;
+  type: string;
   name: string;
-  onClick: React.MouseEventHandler;
+  onClick: Function;
+};
+
+type Icon = {
+  [index: string]: string;
 };
 
 export default function Node(props: Props) {
-  const srcArr = props.icon.split("/");
+  const { id, type, name, onClick } = props;
+
+  const icon: Icon = {
+    DIRECTORY: Image.directory,
+    FILE: Image.file,
+  };
+  const srcArr = icon[type].split("/");
   const alt = srcArr[srcArr.length - 1];
 
   return (
-    <div className="Nodes" onClick={props.onClick}>
-      <div className="Node">
-        <img src={props.icon} alt={alt} />
-        <div className="Name">{props.name}</div>
-      </div>
+    <div className="Node" id={id} onClick={() => onClick(id, name, type)}>
+      <img className="Image" src={icon[type]} alt={alt} />
+      <div className="Name">{name}</div>
     </div>
   );
 }
 
 Node.defaultProps = {
-  onClick: () => console.log("Node Click!"),
+  onClick: (id: string, name: string, type: string) =>
+    console.log(
+      `Node Click ! - nodeId : ${id}, nodeName : ${name}, nodeType: ${type}`
+    ),
 };
