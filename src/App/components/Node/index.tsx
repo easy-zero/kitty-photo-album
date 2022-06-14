@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "../../constant/image";
-import "../../assets/scss/style.scss";
+import "./Node.scss";
 
 type Props = {
   id: string;

@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "../../constant/image";
-import "../../assets/scss/style.scss";
+import "./Layout.scss";
 
 type Props = {
   title: string;

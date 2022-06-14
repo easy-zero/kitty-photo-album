@@ -1,0 +1,9 @@
+$background: #eee;
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $background;
+  flex-direction: column;
+}
