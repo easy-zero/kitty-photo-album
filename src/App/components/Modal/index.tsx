@@ -36,10 +36,18 @@ export default function Modal(props: Props) {
     return () => window.removeEventListener("keydown", closeFunc);
   }, []);
 
+  const onCloseFunc = (e: any) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    } else {
+      return;
+    }
+  };
+
   return (
     <>
       {visible && (
-        <div className="BackDrop" onClick={onClose}>
+        <div className="BackDrop" onClick={(e) => onCloseFunc(e)}>
           {type === "image" ? (
             <img className="Thumbnail" src={imagePath} alt={alt} />
           ) : (
