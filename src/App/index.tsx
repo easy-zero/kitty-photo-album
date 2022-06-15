@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Layout, Node, Modal } from "./components";
+import { Layout, Node, Modal, Progress } from "./components";
 
 import callMockup from "./mockup"; // TODO: 삭제
 
@@ -16,6 +16,7 @@ export default function App() {
   const [data, setData] = useState<IData[]>([]);
   const [filePath, setFilePath] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = callMockup();
@@ -57,6 +58,7 @@ export default function App() {
         onConfirm={() => setIsOpen(false)}
         onClose={() => setIsOpen(false)}
       />
+      <Progress visible={loading} />
     </>
   );
 }
