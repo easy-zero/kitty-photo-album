@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
+import api from "./api";
 import { Layout, Node, Modal, Progress } from "./components";
 import { getPath } from "./utils";
-
-import callMockup from "./mockup"; // TODO: 삭제
 
 interface IData {
   id: string;
@@ -31,33 +30,46 @@ export default function App() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const fetchData = callMockup();
-    if (fetchData) {
-      setData(fetchData);
-      cache.root = { parentId: "", data: fetchData };
-    }
+    const fetchData = async () => {
+      setLoading(true);
+      const rootData = await api.contents_list();
+
+      if (rootData) {
+        setData(rootData);
+        // 메모리에 캐시
+        cache.root = { parentId: "", data: rootData };
+        setLoading(false);
+      }
+    };
+
+    fetchData();
   }, []);
 
-  const handleClickNode = (item: any) => {
+  const handleClickNode = async (item: any) => {
     if (item.type === "FILE") {
       setIsOpen(true);
       setFilePath(item.filePath);
     } else {
-      setPwd(`${pwd} - ${item.name}`);
       // 메모리 체크
       if (cache[item.id]) {
         setData(cache[item.id].data);
         setParentId(item.parent ? item.parent.id : "root");
       } else {
-        const fetchData = callMockup(Number(item.id));
-        setData(fetchData);
-        setParentId(item.parent ? item.parent.id : "root");
-        // 메모리에 캐시
-        cache[item.id] = {
-          parentId: item.parent ? item.parent.id : "root",
-          data: fetchData,
-        };
+        setLoading(true);
+        const dirData = await api.contents_list(item.id);
+        if (dirData) {
+          setData(dirData);
+          // 메모리에 캐시
+          cache[item.id] = {
+            parentId: item.parent ? item.parent.id : "root",
+            data: dirData,
+          };
+
+          setParentId(item.parent ? item.parent.id : "root");
+          setLoading(false);
+        }
       }
+      setPwd(`${pwd} - ${item.name}`);
     }
   };
 

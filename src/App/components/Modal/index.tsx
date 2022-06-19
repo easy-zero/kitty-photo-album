@@ -12,6 +12,9 @@ type Props = {
   confirmTitle: string;
 };
 
+const IMAGE_BASE_URL =
+  "https://fe-dev-matching-2021-03-serverlessdeploymentbuck-t3kpj3way537.s3.ap-northeast-2.amazonaws.com/public";
+
 export default function Modal(props: Props) {
   const {
     type,
@@ -49,7 +52,11 @@ export default function Modal(props: Props) {
       {visible && (
         <div className="BackDrop" onClick={(e) => onCloseFunc(e)}>
           {type === "image" ? (
-            <img className="Thumbnail" src={imagePath} alt={alt} />
+            <img
+              className="Thumbnail"
+              src={IMAGE_BASE_URL + imagePath}
+              alt={alt}
+            />
           ) : (
             <div className="Modal">
               <div className="Contents">{children}</div>
