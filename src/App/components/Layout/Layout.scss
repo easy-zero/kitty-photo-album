@@ -37,9 +37,10 @@ body {
 }
 
 .Nodes {
+  min-height: 95px;
   padding: 20px;
   display: flex;
-  align-items: baseline;
+  align-items: center;
   flex-direction: row;
 }
 
