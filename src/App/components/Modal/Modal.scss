@@ -1,0 +1,55 @@
+$border: #ccc;
+$background: #fff;
+$button: #ddd;
+
+.BackDrop {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.Thumbnail {
+  max-width: 1000px;
+  max-height: 900px;
+  object-fit: cover;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.Modal {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 150px;
+  border: 1px solid $border;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  background-color: $background;
+  border-radius: 5px;
+}
+
+.Contents {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 2 1 0;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.Footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 0;
+  background-color: $button;
+  border-radius: 0px 0px 5px 5px;
+  cursor: pointer;
+}

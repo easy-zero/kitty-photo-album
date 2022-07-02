@@ -1,0 +1,58 @@
+$background: #eee;
+$border: #ccc;
+$container: #fff;
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $background;
+  flex-direction: column;
+  position: relative;
+}
+
+.Layout {
+  height: 100%;
+}
+
+.Title {
+  text-align: center;
+}
+
+.Container {
+  border: 1px solid $border;
+  background-color: $container;
+  border-radius: 5px;
+  width: 800px;
+  height: 600px;
+}
+
+.BreadCrumb {
+  height: 32px;
+  padding: 16px;
+  border-bottom: 1px solid $border;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.Nodes {
+  min-height: 95px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.Prev {
+  height: 40px;
+}
+
+.ModalImage {
+  position: absolute;
+  max-width: 1000px;
+  max-height: 900px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
