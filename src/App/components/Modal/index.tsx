@@ -1,21 +1,12 @@
-import React, { MouseEventHandler, useEffect } from "react";
+import React, { useEffect } from "react";
+import { Props } from "../../interfaces/Index";
 import Image from "../../constant/image";
 import "./Modal.scss";
-
-type Props = {
-  type: "dialog" | "image";
-  imagePath: string;
-  visible: boolean;
-  onConfirm: MouseEventHandler;
-  onClose: any;
-  children: JSX.Element | React.ReactNode;
-  confirmTitle: string;
-};
 
 const IMAGE_BASE_URL =
   "https://fe-dev-matching-2021-03-serverlessdeploymentbuck-t3kpj3way537.s3.ap-northeast-2.amazonaws.com/public";
 
-export default function Modal(props: Props) {
+export default function Modal(props: Props.ModalProps) {
   const {
     type,
     imagePath,

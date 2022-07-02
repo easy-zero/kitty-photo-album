@@ -1,22 +1,12 @@
 import React from "react";
+import { Props, misc } from "../../interfaces/Index";
 import Image from "../../constant/image";
 import "./Node.scss";
 
-type Props = {
-  id: string;
-  type: string;
-  name: string;
-  onClick: Function;
-};
-
-type Icon = {
-  [index: string]: string;
-};
-
-export default function Node(props: Props) {
+export default function Node(props: Props.NodeProps) {
   const { id, type, name, onClick } = props;
 
-  const icon: Icon = {
+  const icon: misc.NodeIcon = {
     DIRECTORY: Image.directory,
     FILE: Image.file,
   };

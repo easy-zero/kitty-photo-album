@@ -1,15 +1,9 @@
-import React, { MouseEventHandler } from "react";
+import React from "react";
+import { Props } from "../../interfaces/Index";
 import Image from "../../constant/image";
 import "./Layout.scss";
 
-type Props = {
-  title: string;
-  path: string;
-  children: JSX.Element | React.ReactNode;
-  onPrevClick: MouseEventHandler;
-};
-
-export default function Layout(props: Props) {
+export default function Layout(props: Props.LayoutProps) {
   const { title, path, children, onPrevClick } = props;
 
   return (

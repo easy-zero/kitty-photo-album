@@ -1,29 +1,15 @@
 import React, { useState, useEffect } from "react";
 import api from "./api";
 import { Layout, Node, Modal, Progress } from "./components";
+import { misc } from "./interfaces/Index";
 import { getPath } from "./utils";
 
-interface IData {
-  id: string;
-  name: string;
-  type: string;
-  filePath: null | string;
-  parent: null | { id: number };
-}
-
-interface Cache {
-  [index: string]: {
-    parentId: string;
-    data: Array<any>;
-  };
-}
-
 // 불러온 데이터 캐싱 메모리
-const cache: Cache = {};
+const cache: misc.Cache = {};
 
 export default function App() {
   const [pwd, setPwd] = useState("root");
-  const [data, setData] = useState<IData[]>([]);
+  const [data, setData] = useState<misc.Data[]>([]);
   const [parentId, setParentId] = useState("");
   const [filePath, setFilePath] = useState("");
   const [isOpen, setIsOpen] = useState(false);
