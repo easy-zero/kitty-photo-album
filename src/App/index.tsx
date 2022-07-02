@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import api from "./api";
 import { Layout, Node, Modal, Progress } from "./components";
-import { misc } from "./interfaces/Index";
+import { misc } from "./interfaces";
 import { getPath } from "./utils";
 
 // 불러온 데이터 캐싱 메모리

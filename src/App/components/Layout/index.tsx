@@ -1,5 +1,5 @@
 import React from "react";
-import { Props } from "../../interfaces/Index";
+import { Props } from "../../interfaces";
 import Image from "../../constant/image";
 import "./Layout.scss";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Props, misc } from "../../interfaces/Index";
+import { Props, misc } from "../../interfaces";
 import Image from "../../constant/image";
 import "./Node.scss";
 
