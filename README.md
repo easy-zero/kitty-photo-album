@@ -2,7 +2,9 @@
 
 ### **[프로그래머스 과제] 고양이 사진첩 애플리케이션 with React**
 
-프로그래머스 과제관의 [고양이 사진첩 애플리케이션](https://programmers.co.kr/skill_check_assignments/100 "프로그래머스 고양이 사진첩 애플리케이션") 을 React + Typescript 로 구현
+프로그래머스 과제관의 [고양이 사진첩 애플리케이션](https://programmers.co.kr/skill_check_assignments/100 "프로그래머스 고양이 사진첩 애플리케이션") 을 React + Typescript 로 구현  
+
+> for React + Typescript + Git convention study
 
 <img width="600" src="./public/kitty-photo-album.gif" alt="kitty-photo-album" />
 
